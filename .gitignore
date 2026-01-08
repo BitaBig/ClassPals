@@ -1,0 +1,23 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.production
+*.log
+.DS_Store
+.vscode/
+.idea/
+coverage/
+*.swp
+*.swo
+*~
+
+# Frontend
+frontend/dist/
+frontend/.vite/
+
+# Backend
+backend/dist/
+backend/uploads/
+
