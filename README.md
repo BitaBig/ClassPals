@@ -8,7 +8,7 @@ A student-run platform where students can search for university courses, join co
 - **Backend**: Node.js + TypeScript + Express
 - **Database**: MongoDB (Mongoose)
 - **Auth**: Firebase Authentication
-- **File Storage**: Firebase Storage (not in MVP)
+- **File Storage**: Firebase Storage 
 - **Hosting**: Firebase Hosting (frontend), Heroku (backend)
 
 ## Project Structure
