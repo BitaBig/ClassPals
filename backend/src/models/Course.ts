@@ -2,9 +2,10 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 // Course interface for TypeScript
 export interface ICourse extends Document {
-  universityId: string;
-  code: string;
-  name: string;
+  university: string;
+  courseCode: string;
+  courseName: string;
+  professor?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -12,29 +13,36 @@ export interface ICourse extends Document {
 // Course schema
 const CourseSchema: Schema = new Schema(
   {
-    universityId: {
+    university: {
       type: String,
       required: true,
+      trim: true,
       index: true,
     },
-    code: {
+    courseCode: {
+      type: String,
+      required: true,
+      trim: true,
+      uppercase: true,
+    },
+    courseName: {
       type: String,
       required: true,
       trim: true,
     },
-    name: {
+    professor: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt
+    timestamps: true,
   }
 );
 
 // Compound index for unique course per university
-CourseSchema.index({ universityId: 1, code: 1 }, { unique: true });
+CourseSchema.index({ university: 1, courseCode: 1 }, { unique: true });
 
 // Export the model
 export default mongoose.model<ICourse>('Course', CourseSchema);

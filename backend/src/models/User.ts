@@ -4,7 +4,9 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IUser extends Document {
   firebaseUid: string;
   email: string;
-  name: string;
+  university: string;
+  program?: string;
+  year?: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,15 +26,26 @@ const UserSchema: Schema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      index: true,
     },
-    name: {
+    university: {
       type: String,
       required: true,
       trim: true,
+      index: true,
+    },
+    program: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    year: {
+      type: Number,
+      required: false,
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt
+    timestamps: true,
   }
 );
 
