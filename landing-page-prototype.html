@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassPals - Landing Page Prototype</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #14b8a6;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #14b8a6;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-secondary:hover {
+            background: #14b8a6;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #7dd3fc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #93c5fd;
+            color: rgb(131, 128, 128);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(125, 211, 252, 0.4);
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #14b8a6;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .mockup-card h3 {
+            color: #14b8a6;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mockup-card p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: #f9fafb;
+            padding: 4rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            color: #14b8a6;
+            margin-bottom: 1rem;
+        }
+
+        .features-header p {
+            font-size: 1.2rem;
+            color: #6b7280;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #14b8a6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #14b8a6;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #7dd3fc;
+            color: #0d9488;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            color: #14b8a6;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #6b7280;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d9488;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <span>ClassMates</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary">Sign In</button>
+                <button class="btn btn-primary">Get Started</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Connect with Your Course Community</h1>
+            <p>Search courses, join hubs, and get answers from classmates. Your academic success starts here.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-large">Get Started</button>
+                <button class="btn btn-secondary btn-large">Browse Courses</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="mockup-card">
+                <h3>CS 101 - Introduction to Computer Science</h3>
+                <p>Simon Fraser University • Prof. Smith</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">👥 245 students • 💬 12 new posts</p>
+            </div>
+            <div class="mockup-card" style="opacity: 0.8;">
+                <h3>MATH 201 - Calculus II</h3>
+                <p>University of British Columbbia • Prof. Johnson</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">👥 189 students • 💬 8 new posts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="features-header">
+                <h2>Everything You Need to Succeed</h2>
+                <p>Join thousands of students connecting in their course communities</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Search Courses</h3>
+                    <p>Find your courses by university, course code, or professor name. Join course hubs instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Join Course Hubs</h3>
+                    <p>Connect with classmates in dedicated course communities. Share resources and collaborate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Ask & Answer Questions</h3>
+                    <p>Post questions and help others in your course community. Get the support you need.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Sign Up</h3>
+                <p>Create your account with your university email</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Find Your Courses</h3>
+                <p>Search and join your courses to access course hubs</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Start Connecting</h3>
+                <p>Ask questions, share answers, and help your classmates</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Connect with Your Course Community?</h2>
+        <p>Join thousands of students already using ClassPals</p>
+        <button class="btn btn-primary btn-large" style="background: white; color: #14b8a6;">Get Started Free</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>&copy; 2024 ClassPals. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
